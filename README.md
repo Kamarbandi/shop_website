@@ -1,5 +1,6 @@
 # Shop Website System Design
 
+This document outlines the system design for a shop website, covering the architecture, components, and workflows necessary to create a scalable, secure, and user-friendly platform.
 
 ## 1. Requirements
 
@@ -23,7 +24,8 @@
 ## 2. High-Level Architecture
 
 ### Frontend (Client Layer)
-- Web application (Next.js + React-admin + OAuth + MongoDB)
+- Web application (React, Angular, or Vue.js)
+- Mobile application (iOS and Android using React Native or Flutter)
 
 ### Backend (Service Layer)
 - API Gateway
@@ -36,7 +38,7 @@
 
 ### Infrastructure
 - Cloud provider (AWS, Google Cloud, Azure)
-- Container orchestration (Docker)
+- Container orchestration (Kubernetes, Docker)
 
 ### Third-party Services
 - Payment gateway (Stripe, PayPal)
@@ -63,6 +65,16 @@ Each service is independently deployable and focused on a specific domain.
 - **SQL Database**: Stores structured data such as user information, product details, orders, and transactions.
 - **NoSQL Database**: Stores unstructured data such as reviews, product descriptions, and images.
 - **Elasticsearch**: Provides fast search capabilities with filtering and full-text search.
+
+#### Horizontal and Vertical Scaling
+
+- **Horizontal Scaling**: 
+  - **SQL Database**: Implement read replicas and sharding. Distribute the load by directing read operations to read replicas while the master handles write operations.
+  - **NoSQL Database**: Use sharding to distribute data across multiple servers, ensuring even distribution of load and data.
+
+- **Vertical Scaling**:
+  - **SQL Database**: Increase the resources (CPU, RAM, storage) of the database server to handle increased load.
+  - **NoSQL Database**: Similarly, increase resources to accommodate higher loads, focusing on memory and storage.
 
 ### Infrastructure
 - **Load Balancer**: Distributes incoming requests across multiple servers to ensure high availability.
